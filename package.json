@@ -1,0 +1,9 @@
+{
+  "name": "pi-warp-kitty-images",
+  "version": "1.0.0",
+  "description": "Enable Kitty image protocol for Warp terminal in pi's TUI",
+  "keywords": ["pi-package"],
+  "pi": {
+    "extensions": ["./extensions"]
+  }
+}
