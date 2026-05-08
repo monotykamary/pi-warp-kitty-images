@@ -1,5 +1,5 @@
-import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
-import { setCapabilities, getCapabilities } from "@mariozechner/pi-tui";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import { setCapabilities, getCapabilities } from "@earendil-works/pi-tui";
 
 export default function (pi: ExtensionAPI) {
   pi.on("session_start", async () => {
