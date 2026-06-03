@@ -2,9 +2,16 @@
 
 # 🖼️ pi-warp-kitty-images
 
-Enable the **Kitty graphics protocol** for the [Warp terminal](https://warp.dev) inside [pi](https://github.com/pi-engineering/pi)'s TUI.
+**Kitty graphics protocol for [Warp terminal](https://warp.dev) in [pi](https://github.com/earendil-works/pi-coding-agent)**
+
+_Enable images, true color, and hyperlinks in Warp's TUI._
+
+[![pi extension](https://img.shields.io/badge/pi-extension-blueviolet)](https://github.com/earendil-works/pi-coding-agent)
+[![license](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 
 </div>
+
+---
 
 ---
 
