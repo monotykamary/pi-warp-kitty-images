@@ -32,7 +32,13 @@ Warp supports the [Kitty graphics protocol](https://sw.kovidgoyal.net/kitty/grap
 ## Installation
 
 ```bash
-pi install pi-warp-kitty-images
+pi install npm:pi-warp-kitty-images
+```
+
+Or install from GitHub:
+
+```bash
+pi install git:github.com/monotykamary/pi-warp-kitty-images
 ```
 
 Or manually clone into your pi extensions directory.
