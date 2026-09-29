@@ -2,32 +2,19 @@
 
 # 🖼️ pi-warp-kitty-images
 
-**Kitty graphics protocol for [Warp terminal](https://warp.dev) in [pi](https://github.com/earendil-works/pi-coding-agent)**
-
-_Enable images, true color, and hyperlinks in Warp's TUI._
-
-[![pi extension](https://img.shields.io/badge/pi-extension-blueviolet)](https://github.com/earendil-works/pi-coding-agent)
-[![license](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
+**Kitty graphics protocol for [Warp](https://warp.dev) in [Pi](https://github.com/earendil-works/pi)**
 
 </div>
 
----
+## Pi now detects Warp natively
 
----
+Pi 0.99 recognizes `TERM_PROGRAM=WarpTerminal`, `WARP_SESSION_ID`, and `WARP_TERMINAL_SESSION_UUID`, enabling Kitty images, true color, and OSC 8 hyperlinks. This extension is now a compatibility package: it uses the native capability contract rather than force-enabling features.
 
-## The Problem
+Existing installs can remain installed or be removed without losing native Warp support:
 
-Warp supports the [Kitty graphics protocol](https://sw.kovidgoyal.net/kitty/graphics-protocol/), but `pi-tui`'s capability detection doesn't recognize it. Images, true color, and hyperlinks are silently disabled — even though Warp handles them perfectly.
-
-## The Solution
-
-`pi-warp-kitty-images` force-enables image rendering, true color, and hyperlinks when `TERM_PROGRAM=warpterminal`:
-
-| Capability | Before | After |
-|-----------|--------|-------|
-| Images | ❌ Disabled | ✅ Kitty protocol |
-| True Color | ❌ Disabled | ✅ 24-bit color |
-| Hyperlinks | ❌ Disabled | ✅ OSC 8 links |
+```bash
+pi remove npm:pi-warp-kitty-images
+```
 
 ## Installation
 
@@ -35,33 +22,29 @@ Warp supports the [Kitty graphics protocol](https://sw.kovidgoyal.net/kitty/grap
 pi install npm:pi-warp-kitty-images
 ```
 
-Or install from GitHub:
+## Configuration
+
+Pi's `terminal.images`, `terminal.trueColor`, and `terminal.hyperlinks` settings take precedence over environment overrides. `PI_IMAGE_PROTOCOL=none` disables images. Automatic detection remains conservative inside tmux/screen; this package does not bypass that safety check.
+
+## Development
 
 ```bash
-pi install git:github.com/monotykamary/pi-warp-kitty-images
+bun install
+bun run test
+bun run typecheck
 ```
-
-Or manually clone into your pi extensions directory.
-
-## How It Works
-
-On every `session_start`, the extension checks `TERM_PROGRAM`. If it equals `WarpTerminal`, it patches TUI capabilities via `pi-tui`'s `setCapabilities()` API:
-
-```typescript
-pi.tui.setCapabilities({
-  images: "kitty",
-  trueColor: true,
-  hyperlinks: true,
-});
-```
-
-No configuration needed — it just works.
 
 ## Requirements
 
-- [pi](https://github.com/pi-engineering/pi) ≥ 1.x
-- [Warp](https://warp.dev) terminal
+- Pi 0.99.0
+- Warp terminal for native image support
 
 ## License
 
 MIT
+
+## Pi 0.99 compatibility (1.0.4)
+
+Uses Pi 0.99's native Warp detection instead of overwriting global capabilities. Settings and environment overrides, multiplexer safety, headless operation and repeated lifecycle events are covered by actual-host tests.
+
+Tested with Pi 0.99.0. Host-provided Pi packages are wildcard peers, not bundled dependencies; development uses exact 0.99.0 versions.

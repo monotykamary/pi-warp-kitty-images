@@ -1,23 +1,12 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
-import { setCapabilities, getCapabilities } from "@earendil-works/pi-tui";
+import { getCapabilities } from "@earendil-works/pi-tui";
 
 export default function (pi: ExtensionAPI) {
-  pi.on("session_start", async () => {
-    const termProgram = process.env.TERM_PROGRAM?.toLowerCase() || "";
-
-    if (termProgram === "warpterminal") {
-      const caps = getCapabilities();
-
-      if (!caps.images) {
-        // Warp supports the Kitty graphics protocol.
-        // pi-tui doesn't detect it, so we force-enable it here.
-        setCapabilities({
-          ...caps,
-          images: "kitty",
-          trueColor: true,
-          hyperlinks: true,
-        });
-      }
-    }
+  pi.on("session_start", (_event, ctx) => {
+    if (ctx.mode !== "tui") return;
+    // Pi 0.99 natively detects Warp (including WARP_SESSION_ID). Let the
+    // host honor terminal settings, environment overrides and tmux safety.
+    // No global override means reload/shutdown cannot leak capabilities.
+    getCapabilities();
   });
 }
