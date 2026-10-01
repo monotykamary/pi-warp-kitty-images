@@ -1,6 +1,6 @@
 {
   "name": "pi-warp-kitty-images",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Enable Kitty image protocol for Warp terminal in pi's TUI",
   "keywords": [
     "pi-package"
@@ -11,8 +11,8 @@
     ]
   },
   "devDependencies": {
-    "@earendil-works/pi-coding-agent": "0.99.0",
-    "@earendil-works/pi-tui": "0.99.0",
+    "@earendil-works/pi-coding-agent": "1.0.0",
+    "@earendil-works/pi-tui": "1.0.0",
     "@types/node": "26.4.1",
     "typescript": "6.0.3",
     "vitest": "4.1.7"
@@ -24,6 +24,7 @@
   "type": "module",
   "scripts": {
     "test": "vitest run",
+    "test:pi": "node scripts/test-pi-compat.mjs",
     "typecheck": "tsc --noEmit"
   }
 }

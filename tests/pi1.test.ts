@@ -4,7 +4,7 @@ import { resolve } from "node:path";
 import { getCapabilities, resetCapabilitiesCache, setCapabilities, setCapabilityOverrides } from "@earendil-works/pi-tui";
 import extension from "../extensions/index.js";
 const local = false;
-const root = resolve(".tmp/pi99-image-test");
+const root = resolve(".tmp/pi1-image-test");
 const handlers = new Map<string, any>();
 const ctx = { mode: "tui", cwd: root };
 beforeEach(() => {
