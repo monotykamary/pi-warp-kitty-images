@@ -36,7 +36,7 @@ bun run typecheck
 
 ## Requirements
 
-- Pi 1.0.0
+- Pi 1.1.0
 - Warp terminal for native image support
 
 ## License
@@ -47,4 +47,4 @@ MIT
 
 Uses Pi 1.0's native Warp detection instead of overwriting global capabilities. Settings and environment overrides, multiplexer safety, headless operation and repeated lifecycle events are covered by actual-host tests.
 
-Tested with Pi 1.0.0. Host-provided Pi packages are wildcard peers, not bundled dependencies; development uses exact 1.0.0 versions. `bun run test:pi` checks actual modular and bundled CLI host detection and lifecycle behavior, without opening a TUI.
+Tested with Pi 1.1.0. Host-provided Pi packages are wildcard peers, not bundled dependencies; development uses exact 1.1.0 versions. `bun run test:pi` checks actual modular and bundled CLI host detection and lifecycle behavior, without opening a TUI.
